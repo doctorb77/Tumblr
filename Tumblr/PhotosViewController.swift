@@ -1,10 +1,3 @@
-//
-//  PhotosViewController.swift
-//  Tumblr
-//
-//  Created by Jonathan Grider on 1/10/18.
-//  Copyright © 2018 Jonathan Grider. All rights reserved.
-//
 
 import UIKit
 import AlamofireImage
@@ -38,6 +31,10 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
     }
     return cell
   }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -48,6 +45,17 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
     tableView.insertSubview(refreshControl, at: 0)
     tableView.dataSource = self
     getPictures()
+  }
+    
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    let cell = sender as! PictureCell
+    let destination = segue.destination as! PhotoDetailsViewController
+    
+    destination.bigImage = cell.tumblrImageView.image
+    
+    if let section = tableView.indexPath(for: cell)?.section {
+        let post = posts[section]
+    }
   }
   
   override func didReceiveMemoryWarning() {

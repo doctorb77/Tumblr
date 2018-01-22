@@ -1,10 +1,3 @@
-//
-//  PictureCell.swift
-//  Tumblr
-//
-//  Created by Jonathan Grider on 1/10/18.
-//  Copyright © 2018 Jonathan Grider. All rights reserved.
-//
 
 import UIKit
 
